@@ -1,28 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Form from './Form';
+import Credit from './Credit';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+  constructor(props) {
+    super(props);
+    this.state = { 
+
+      number:'00000000'
+      ,
+      name:'********'
+         ,
+
+        ref:'22/55'
+
+
+     }
+  }
+  send1=(value)=>{
+    this.setState({name:value})
+  }
+  send2=(value)=>{
+   return this.setState({number:value})
+  }
+  send3=(value)=>{
+    return this.setState({ref:value})
+  }
+
+  render() { 
+    return ( <div>
+     
+
+      < Form   sendname={ (name)=>this.send1(name)    }  
+                sendnumber={ (number)=>this.send2(number)  } 
+                sendref={ (ref)=>this.send3(ref)   }           />
+                <Credit name={this.state.name}
+                 number={this.state.number}
+                 ref={this.state.ref}/>
+
+    </div> );
   }
 }
-
-export default App;
+ 
+export default App ;
